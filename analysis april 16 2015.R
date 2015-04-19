@@ -42,7 +42,7 @@ datp <- read.csv("productivityrows.csv")
 
 # Visualizing data: 
 trellis.device()
-scatterplot(Productivity~TempMean | grpA, data=datp, xlim=c(0, 35),  smoother=FALSE, by.groups=TRUE, legend.plot=FALSE, legend.coords="topleft", xlab='Mean Temperature', ylab='NPP', main='NPP',  cex.lab=1.5, cex.main=2, cex.axis=1.5, pch=rep(1:10, length(unique(datp$grpA))))
+scatterplot(Productivity~TempMean | grpA, data=dat1, xlim=c(0, 35),  smoother=FALSE, by.groups=TRUE, legend.plot=FALSE, legend.coords="topleft", xlab='Mean Temperature', ylab='NPP', main='NPP',  cex.lab=1.5, cex.main=2, cex.axis=1.5, pch=rep(1:10, length(unique(datp$grpA))))
 
 # notes:  add muren study
 
