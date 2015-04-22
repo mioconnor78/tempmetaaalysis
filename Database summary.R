@@ -16,9 +16,16 @@
 
 ###### database summary for JASM:
 
-dat<-dat1
+dat<-data.fmm
 
 ref.Expt<-ddply(dat, .(RefShort, Expt, System, Method), summarize, max(MaxTrophicLev), .drop=TRUE)
+
+systems <- ddply(dat, .(System), summarize, length(unique(RefShort)))
+systems <- ddply(dat, .(System), summarize, length(unique(Expt)))
+method.r <- ddply(dat, .(Method), summarize, length(unique(RefShort)))
+method.s <- ddply(dat, .(Method), summarize, length(unique(Expt)))
+
+
 ref.Expt
 table(ref.Expt$System)
 table(ref.Expt$Method)
