@@ -181,9 +181,11 @@ mintemp<-ddply(data.fat, .(Expt), summarize, min(TempIncr))
 names(mintemp)<-c('Expt', 'TempIncrMin')
 data.fm<-merge(data.fat, maxtemp, by="Expt")
 data.fmm<-merge(data.fm, mintemp, by="Expt")
-data.fmm<-data.fmm[,-(4:5)]
+data.fmm<-data.fmm[,-(5)]
 data.fmm$Tind<-ifelse(data.fmm$TempIncr==data.fmm$TempIncrMin, 'Tmin', 'Tmod')
 data.fmm$Tind<-ifelse(data.fmm$TempIncr==data.fmm$TempIncrMax, 'Tmax', data.fmm$Tind)
+
+## DATABASE PREP COMPLETE ###
 
 ### some checking the database: 
 table(dat1$AddTrt, dat1$StressorAdded)

@@ -172,7 +172,7 @@ dat.cfc$Bcr <- Kb$Bcr[match(dat.cfc$tempBcrID, Kb$tempBcrID)]
 ## plot by grpA (expt + max trophic lev)
 trellis.device()
 # squares = stressor applied
-scatterplot((Bcr)~TempMean | ExptA, data=Kb, smoother=FALSE, by.groups=TRUE, legend.plot=FALSE, legend.coords="topright", cex.lab=2, xlab='Temperature Mean (C)', ylab='Bcr', main='Bcr, CFC expts', pch = c(19,19,19,15,19,15,19,19,19,19,19,15,19), cex = 2, col = (c(1, 'orange', 2,2,  3,3, 4,'lightblue', 'lightblue', 6,6, 8,8)), lwd = 3)
+scatterplot((Bcr)~TempMean | ExptA, data=Kb, smoother=FALSE, by.groups=TRUE, legend.plot=TRUE, legend.coords="topright", cex.lab=2, xlab='Temperature Mean (C)', ylab='Bcr', main='Bcr, CFC expts', pch = c(19,19,19,15,19,15,19,19,19,19,19,15,19), cex = 2, col = (c(1, 'orange', 2,2,  3,3, 4,'lightblue', 'lightblue', 6,6, 8,8)), lwd = 3)
 
 trellis.device()
 # squares = stressor applied
