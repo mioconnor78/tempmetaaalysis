@@ -50,6 +50,26 @@ sT.sum
 
 #range of max trophic levels
 ref.mTL<-ddply(dat, .(RefShort, Expt, System, Method), summarize, max(MaxTrophicLev), .drop=TRUE)
+names(ref.mTL) <- c('RefShort', 'Expt', 'System', 'Method', 'MaxTL')
+mTL.r <- ddply(ref.mTL, .(MaxTL), summarize, length(unique(Expt)))
+mTL.s <- ddply(ref.mTL, .(MaxTL), summarize, length(unique(RefShort)))
+cbind(mTL.r, mTL.s[,2]) -> mT.sum
+
+## 
+CFC <- ddply(dat[(dat$MaxTrophicLev=='1'),], .(RefShort, ExptA), summarize, mean(dat$logAbundTot.Auto))
+CFC$cfc <- rep('Y', length(CFC[,1]))
+CFC.r <- ddply(CFC, .(cfc), summarize, length(unique(ExptA)))
+CFC.s <- ddply(CFC, .(cfc), summarize, length(unique(RefShort)))
+cbind(CFC.r, CFC.s[,2]) -> CFC.sum
+
+length(unique(dat$RefShort))
+length(unique(dat$ExptA))
+
+# list of refs
+
+dat.cfca <- merge(dat, CFC, all = TRUE)
+dat.cfc <- dat.cfca[which(dat.cfca$cfc=='Y'),]
+
 
 
 
